@@ -5,12 +5,17 @@ export default [
     name: 'profile',
     component: () => import('@/views/dashboard/profile/Profile.vue'),
   },
-
   {
-    path: '/subscriptions',
-    name: 'subcriptions',
-    component: () => import('@/views/dashboard/subscriptions/Subscription.vue'),
+    path: '/ai-generator',
+    name: 'ai-generator',
+    component: () => import('@/views/dashboard/ai-generator/AiGenerator.vue'),
   },
+
+  // {
+  //   path: '/subscriptions',
+  //   name: 'subcriptions',
+  //   component: () => import('@/views/dashboard/subscriptions/Subscription.vue'),
+  // },
 
 
 
@@ -25,11 +30,11 @@ export default [
   //   name: 'channel-campaigns',
   //   component: () => import('@/views/dashboard/channel-campaigns/ChannelCampaigns.vue'),
   // },
-  {
-    path: '/packages',
-    name: 'packages',
-    component: () => import('@/views/dashboard/packages/Packages.vue'),
-  },
+  // {
+  //   path: '/packages',
+  //   name: 'packages',
+  //   component: () => import('@/views/dashboard/packages/Packages.vue'),
+  // },
   // {
   //   path: '/monetisation-package',
   //   name: 'monetisation-package',
@@ -57,27 +62,23 @@ export default [
   //   name: 'bulk-views-packages',
   //   component: () => import('@/views/dashboard/packages/BulkViewPackages.vue'),
   // },
-  {
-    path: '/custom-package-details/:id',
-    name: 'custom-package-details',
-    component: () => import('@/views/dashboard/packages/PackageDetails.vue'),
-    meta: { bodyClass: 'package-details-page' }
-  },
-  {
-    path: '/custom-package-details/:id/create-package',
-    name: 'create-package',
-    component: () => import('@/views/dashboard/packages/CreateCustomPackage.vue'),
-  },
+  // {
+  //   path: '/custom-package-details/:id',
+  //   name: 'custom-package-details',
+  //   component: () => import('@/views/dashboard/packages/PackageDetails.vue'),
+  //   meta: { bodyClass: 'package-details-page' }
+  // },
+  // {
+  //   path: '/custom-package-details/:id/create-package',
+  //   name: 'create-package',
+  //   component: () => import('@/views/dashboard/packages/CreateCustomPackage.vue'),
+  // },
 
-  {
-    path: '/channel-details/:id',
-    name: 'channel-details',
-    component: () => import('@/views/dashboard/channel-campaigns/ChannelDetails.vue'),
-  },
-  {
-    path: '/ai-generator',
-    name: 'ai-generator',
-    component: () => import('@/views/dashboard/ai-generator/AiGenerator.vue'),
-  },
+  // {
+  //   path: '/channel-details/:id',
+  //   name: 'channel-details',
+  //   component: () => import('@/views/dashboard/channel-campaigns/ChannelDetails.vue'),
+  // },
+ 
  
 ]

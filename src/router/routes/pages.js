@@ -19,16 +19,16 @@ export default [
       redirectIfLoggedIn: true,
     },
   },
-  {
-    path: '/register',
-    name: 'auth-register',
-    component: () => import('@/views/pages/authentication/Register.vue'),
-    meta: {
-      layout: 'full',
-      resource: 'Auth',
-      redirectIfLoggedIn: true,
-    },
-  },
+  // {
+  //   path: '/register',
+  //   name: 'auth-register',
+  //   component: () => import('@/views/pages/authentication/Register.vue'),
+  //   meta: {
+  //     layout: 'full',
+  //     resource: 'Auth',
+  //     redirectIfLoggedIn: true,
+  //   },
+  // },
   {
     path: '/forgot-password',
     name: 'auth-forgot-password',
@@ -98,13 +98,13 @@ export default [
       layout: 'full',
     },
   },
-  {
-    path: '/monetization/google-callback/welcome/',
-    name: 'monetization',
-    component: () => import('@/views/pages/miscellaneous/Monetization.vue'),
-    meta: {
-      layout: 'full',
-      resource: 'Auth',
-    },
-  },
+  // {
+  //   path: '/monetization/google-callback/welcome/',
+  //   name: 'monetization',
+  //   component: () => import('@/views/pages/miscellaneous/Monetization.vue'),
+  //   meta: {
+  //     layout: 'full',
+  //     resource: 'Auth',
+  //   },
+  // },
 ]

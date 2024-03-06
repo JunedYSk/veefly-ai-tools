@@ -55,7 +55,7 @@
           </b-card-text> -->
 
           <!-- social buttons -->
-          <div class="auth-footer-btn d-flex justify-content-center">
+          <!-- <div class="auth-footer-btn d-flex justify-content-center">
             <b-button
               variant="outline-secondary"
               href="javascript:void(0)"
@@ -77,12 +77,12 @@
               </span>
             </b-button>
             <br />
-          </div>
+          </div> -->
 
           <!-- divider -->
-          <div class="divider my-2">
+          <!-- <div class="divider my-2">
             <div class="divider-text">or</div>
-          </div>
+          </div> -->
 
           <b-alert v-if="errors" variant="danger" show>
             <div class="alert-body">
@@ -180,12 +180,13 @@
             </b-form>
           </validation-observer>
 
-          <b-card-text class="text-center mt-2">
+          <!-- <b-card-text class="text-center mt-2">
             <span>New on our platform? </span>
-            <b-link :to="{ name: 'auth-register' }">
-              <span>&nbsp;Create an account</span>
+            <b-link > -->
+              <!-- :to="{ name: 'auth-register' }" -->
+              <!-- <span>&nbsp;Create an account</span>
             </b-link>
-          </b-card-text>
+          </b-card-text> -->
         </b-col>
       </b-col>
       <!-- /Login-->

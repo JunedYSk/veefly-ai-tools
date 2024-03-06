@@ -29,7 +29,7 @@ import '@/libs/newrelic'
 // import '@/libs/tawk'
 
 // Axios Mock Adapter
-import '@/@fake-db/db'
+// import '@/@fake-db/db'
 
 // Zendesk integration
 

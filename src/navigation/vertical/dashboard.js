@@ -2,6 +2,12 @@ export default [
   {
     header: 'Dashboard',
   },
+  {
+    id: 'DashAiGeneratorBtn',
+    title: 'AI Generator',
+    icon: 'CpuIcon',
+    route: 'ai-generator',
+  },
   // {
   //   id: 'DashYoutubeToolsBtn',
   //   title:'YouTube Tools',
@@ -39,12 +45,7 @@ export default [
   //     },
   //   ]
   //   },
-  {
-    id: 'DashAiGeneratorBtn',
-    title: 'AI Generator',
-    icon: 'CpuIcon',
-    route: 'ai-generator',
-  },
+ 
   // {
   //   id: 'DashCampaignsBtn',
   //   title: 'Campaigns',

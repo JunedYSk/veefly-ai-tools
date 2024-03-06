@@ -10,20 +10,15 @@ import { canNavigate } from '@/libs/acl/routeProtection'
 import { isUserLoggedIn, getUserData, getHomeRouteForLoggedInUser, isUserAuthenticated } from '@/auth/utils'
 import dashboard from './routes/dashboard'
 import pages from './routes/pages'
-import addvideo from './routes/add-video'
-import payment from './routes/payment'
+// import addvideo from './routes/add-video'
+// import payment from './routes/payment'
 
 Vue.use(VueRouter)
 
 const key = process.env.VUE_APP_API_KEY
 let crypt = new Encrypter(key)
 
-let videoId = localStorage.getItem('videoId')
-let indexRoute = { name: 'ai-generator', query: { source: 'al' } }
-
-if (videoId) {
-  indexRoute = { name: 'add-video', query: { source: 'sp' } }
-}
+let indexRoute = { name: 'ai-generator' }
 
 const router = new VueRouter({
   mode: 'history',
@@ -35,8 +30,8 @@ const router = new VueRouter({
     { path: '/', redirect: indexRoute },
     ...dashboard,
     ...pages,
-    ...addvideo,
-    ...payment,
+    // ...addvideo,
+    // ...payment,
     {
       path: '*',
       redirect: 'error-404',
@@ -64,7 +59,7 @@ router.beforeEach((to, from, next) => {
           localStorage.setItem('settings', JSON.stringify(settingsresponse.data));
           store.commit('app/UPDATE_SETTINGS', crypt.decrypt(settingsresponse.data))
 
-          console.log(JSON.parse(localStorage.getItem('user')));
+          // console.log(JSON.parse(localStorage.getItem('user')));
 
           if ((!response.data.email_verified_at)) {
 

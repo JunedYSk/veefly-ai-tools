@@ -30,8 +30,9 @@ tag
 tagVariant
 
 */
-import addvideo from './addvideo'
+// import addvideo from './addvideo'
 import dashboard from './dashboard'
 
 // Array of sections
-export default [...addvideo, ...dashboard]
+export default [ ...dashboard] 
+// ...addvideo,

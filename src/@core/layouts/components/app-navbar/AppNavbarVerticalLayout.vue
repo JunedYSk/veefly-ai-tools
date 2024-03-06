@@ -15,7 +15,7 @@
 
     <!-- Left Col -->
     <div
-      class="bookmark-wrapper align-items-center flex-grow-1 "
+      class="bookmark-wrapper align-items-center flex-grow-1"
     >
       <!-- User Channels Container -->
       <v-select
@@ -137,7 +137,7 @@
         <feather-icon class="text-primary" icon="MessageSquareIcon" size="20" />
       </div>
 
-      <p class="user-name font-weight-bolder mb-0 mr-4 text-primary">
+      <!-- <p class="user-name font-weight-bolder mb-0 mr-4 text-primary">
             <b-link :to="{ name: 'addmoney' }">
                 <div class="icon-container" id="wallet_" >
                   <i class="far fa-wallet" id="wallet-icon"></i>
@@ -147,7 +147,7 @@
                 </div>
                 <b-tooltip target="wallet_">Wallet</b-tooltip>
             </b-link>
-      </p>
+      </p> -->
       <!-- <notification-dropdown /> -->
       <user-dropdown />
     </b-navbar-nav>
@@ -228,7 +228,7 @@
               </b-form>
             </validation-observer>
             <div class="">
-            <Channels @selectChannel="selectChannel" v-bind:channels="channels"/>
+            <!-- <Channels @selectChannel="selectChannel" v-bind:channels="channels"/> -->
           </div>
 
           </div>
@@ -305,7 +305,7 @@
               </b-form>
             </validation-observer>
             <div class="">
-            <Channels @selectChannel="selectChannel" v-bind:channels="channels"/>
+            <!-- <Channels @selectChannel="selectChannel" v-bind:channels="channels"/> -->
           </div>
           </div>
               <!-- Modal content goes here -->
@@ -326,8 +326,7 @@ import store from '@/store'
 import axios from '@axios'
 import vSelect from 'vue-select'
 import { ValidationProvider, ValidationObserver } from "vee-validate";
-import Channels from '@/views/add-video/Channels.vue'
-import MainPromoteCard from "@/components/MainPromoteCard";
+// import MainPromoteCard from "@/components/MainPromoteCard";
 import VueBottomSheetVue2 from "@webzlodimir/vue-bottom-sheet-vue2";
 
 
@@ -354,8 +353,7 @@ export default {
     ValidationObserver,
     VueBottomSheetVue2,
     vSelect,
-    Channels,
-    MainPromoteCard,
+  
   },
   props: {
     toggleVerticalMenuActive: {

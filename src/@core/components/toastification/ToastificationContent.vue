@@ -17,7 +17,7 @@
             v-if="title"
             class="mb-0 font-weight-bolder toastification-title"
             :class="`text-${variant}`"
-            v-text="title"
+            v-text="title+''"
           />
           <small
             v-if="text"
