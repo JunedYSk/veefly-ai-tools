@@ -8,6 +8,12 @@ export default [
     icon: 'CpuIcon',
     route: 'ai-generator',
   },
+  {
+    id: 'DashAiDailyIdeasBtn',
+    title: 'Daily Ideas',
+    icon: 'SunIcon',
+    route: 'ai-daily-ideas',
+  },
   // {
   //   id: 'DashYoutubeToolsBtn',
   //   title:'YouTube Tools',

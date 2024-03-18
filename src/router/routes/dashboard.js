@@ -10,6 +10,11 @@ export default [
     name: 'ai-generator',
     component: () => import('@/views/dashboard/ai-generator/AiGenerator.vue'),
   },
+  {
+    path: '/ai-daily-ideas',
+    name: 'ai-daily-ideas',
+    component: () => import('@/views/dashboard/ai-daily-ideas/AiDailyIdeas.vue'),
+  },
 
   // {
   //   path: '/subscriptions',
