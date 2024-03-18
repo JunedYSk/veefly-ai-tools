@@ -984,6 +984,8 @@ export default {
         })
     },
     getPersonalizedIdeas() {
+
+      console.log("getPersonalizedIdeas");
       this.loadingPersonalizedIdeas = true
       axios
         .post("ideation/personalized_ideas", { channelId: this.channelId })

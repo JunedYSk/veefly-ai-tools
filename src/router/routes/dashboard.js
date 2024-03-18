@@ -15,6 +15,16 @@ export default [
     name: 'ai-daily-ideas',
     component: () => import('@/views/dashboard/ai-daily-ideas/AiDailyIdeas.vue'),
   },
+  {
+    path: '/ai-coach',
+    name: 'ai-coach',
+    component: () => import('@/views/dashboard/ai-coach/AiCoach.vue'),
+  },
+  {
+    path: '/ai-coach/:id',
+    name: 'ai-coach-chat',
+    component: () => import('@/views/dashboard/ai-coach/AiCoach.vue'),
+  },
 
   // {
   //   path: '/subscriptions',

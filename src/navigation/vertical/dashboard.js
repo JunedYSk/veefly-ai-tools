@@ -14,6 +14,12 @@ export default [
     icon: 'SunIcon',
     route: 'ai-daily-ideas',
   },
+  {
+    id: 'DashAiCoachBtn',
+    title: 'AI Coach',
+    icon: 'MessageSquareIcon',
+    route: 'ai-coach',
+  },
   // {
   //   id: 'DashYoutubeToolsBtn',
   //   title:'YouTube Tools',

@@ -21,7 +21,7 @@
       <v-select
         v-if="device == 'desktop'"
         class="border desktop-user-channel rounded d-none"
-        :class="{ 'd-block': $route.name == 'start' || $route.name == 'channel-videos' || $route.name == 'bulk-views-packages' || $route.name == 'channel-link' || $route.name == 'buy-monetisation-package' || $route.name == 'buy-silver-package' || $route.name == 'ai-daily-ideas'}"
+        :class="{ 'd-block': $route.name == 'start' || $route.name == 'channel-videos' || $route.name == 'bulk-views-packages' || $route.name == 'channel-link' || $route.name == 'buy-monetisation-package' || $route.name == 'buy-silver-package' || $route.name == 'ai-daily-ideas' || $route.name == 'ai-coach'}"
         v-model="selectedChannel"
         label="channel_title"
         value="id"
