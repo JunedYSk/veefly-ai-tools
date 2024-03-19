@@ -228,7 +228,7 @@
               </b-form>
             </validation-observer>
             <div class="">
-            <!-- <Channels @selectChannel="selectChannel" v-bind:channels="channels"/> -->
+            <Channels @selectChannel="selectChannel" v-bind:channels="channels"/>
           </div>
 
           </div>
@@ -305,7 +305,7 @@
               </b-form>
             </validation-observer>
             <div class="">
-            <!-- <Channels @selectChannel="selectChannel" v-bind:channels="channels"/> -->
+            <Channels @selectChannel="selectChannel" v-bind:channels="channels"/>
           </div>
           </div>
               <!-- Modal content goes here -->
@@ -328,6 +328,7 @@ import vSelect from 'vue-select'
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 // import MainPromoteCard from "@/components/MainPromoteCard";
 import VueBottomSheetVue2 from "@webzlodimir/vue-bottom-sheet-vue2";
+import Channels from '@/views/add-video/Channels.vue'
 
 
 // import NotificationDropdown from './components/NotificationDropdown.vue'
@@ -338,7 +339,7 @@ import "@core/assets/css/font-awesome-pro.min.css";
 export default {
   components: {
     BLink,
-    // Navbar Components
+        // Navbar Components
     BNavbarNav,
     BSpinner,
     BButton,
@@ -353,6 +354,7 @@ export default {
     ValidationObserver,
     VueBottomSheetVue2,
     vSelect,
+    Channels,
   
   },
   props: {

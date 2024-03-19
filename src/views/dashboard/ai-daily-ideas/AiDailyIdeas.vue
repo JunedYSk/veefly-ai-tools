@@ -984,13 +984,10 @@ export default {
         })
     },
     getPersonalizedIdeas() {
-
-      console.log("getPersonalizedIdeas");
       this.loadingPersonalizedIdeas = true
       axios
         .post("ideation/personalized_ideas", { channelId: this.channelId })
         .then(res => {
-          console.log(this.channelId+"    channel id");
           if (res.data.refresh) {
             this.requestPersonalizedIdeas()
           }
