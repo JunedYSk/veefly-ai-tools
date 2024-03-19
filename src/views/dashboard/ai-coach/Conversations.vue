@@ -205,7 +205,26 @@ export default {
 <style scoped>
 .scroll-idea{
   max-height: 40vh; 
-  overflow: auto;
+  overflow-y: auto;
+}
+.scroll-idea::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+.scroll-idea::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+.scroll-idea::-webkit-scrollbar-thumb {
+  background: #888;
+  height: 20px;
+}
+
+/* Handle on hover */
+.scroll-idea::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 .chat-prompts{
   line-height: 23px;

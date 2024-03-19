@@ -1332,9 +1332,5 @@ export default {
   letter-spacing: 0.02em;
   text-align: left;
 }
-/* .copy-icon{
-  color: rgba(155, 81, 224, 1);
-  font-weight: 700;
-} */
 
 </style>

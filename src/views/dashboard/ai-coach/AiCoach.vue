@@ -730,78 +730,8 @@ export default {
   border-radius: 2rem;
   padding: 0.7rem 1.5rem;
 }
-.input-with-button {
-  display: flex;
-  padding: 4px;
-  height: 68px;
-  border-radius: 16px;
-  background-color: #fff;
-  box-shadow: 0px 3px 17px 0px rgba(155, 81, 224, 0.308);
-  transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out;
-}
-.vedioList-input-button {
-  padding: 17px 40px 17px 45px;
-}
-.vedioList-input-button {
-  font-size: 16px;
-  line-height: 100%;
-  padding: 17px 40px 17px 15px;
-  width: 100%;
-  height: 100%;
-  border: 1px solid transparent;
-  border-radius: 12px;
-  background-color: #fff;
-  color: #1d1b28;
-  text-overflow: ellipsis;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  transition: box-shadow 0.2s ease-out;
-}
-.vedioList-input-button:focus-visible {
-  outline: none;
-}
-.arrow-btn {
-  background-color: rgba(255, 255, 255, 0) !important;
-  border: none !important;
-  border-collapse: collapse;
-  position: absolute;
-  top: 9%;
-  right: 7px;
-}
-.like-button{
-   background: rgba(155, 81, 224, 0.2) !important;
-   border: none;
-   color: rgba(155, 81, 224, 1) !important;
-}
-.main-heading{
-    color: rgba(51, 51, 51, 1);
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 30px;
-    letter-spacing: 0.02em;
-    text-align: left;
-}
-.credit-text{
-  color: rgba(155, 81, 224, 1);
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 36px;
-  letter-spacing: 0.02em;
-  text-align: right;
-}
-.make-blur{
-  filter: blur(7px);
-  cursor: not-allowed;
-  pointer-events: none;
-  user-select: none;
-}
-.middle-blur-div{
-  position: absolute;
-  bottom: -6%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-}
+
+
 .premium-heading-text{
   color: rgba(51, 51, 51, 1);
   font-size: 22px;
@@ -816,15 +746,6 @@ export default {
   letter-spacing: -0.02em;
   color: rgba(155, 81, 224, 1);
 }
-.main-top-heading{
-  font-family: Poppins;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 36px;
-  letter-spacing: 0.02em;
-  text-align: left;
-  color: rgba(130, 130, 130, 1);
-}
    
 /* Primary UI */
 .ai-text{
@@ -833,64 +754,22 @@ export default {
   font-weight:900;
 }
 @media only screen and (max-width: 767px) {
-  .input-with-button {
-    display: flex;
-    height: 61px;
-    border-radius: 16px;
-    background-color: #fff;
-    box-shadow: 0 3px 16px rgba(110, 125, 177, 0.28);
-    transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out;
-  }
-  .arrow-btn {
-    right: 0px;
-    top:11%;
-  }
-  .vedioList-input-button {
-    padding: 13px 40px 13px 20px;
-    border-radius: 12px;
-  }
   .ai-text{
     font-size:26px;
   }
-  /* .main-div{
-    height: 700px;
-  } */
-  .main-heading{
-     font-size: 1.25rem;
-  }
-  .credit-text{
-    font-size: 1.5rem;
+  .main-div{
+    padding: 1rem;
+    /* height: 700px; */
   }
 }
-
-
-
 @media only screen and (max-width: 308px) {
   .ai-text{
     font-size:23px;
   }  
 }
 
-/* Secondary UI */
-.card-css{
-  /* border-radius: 20px; */
-  box-shadow: none;
-  background-color: transparent;
-  margin-bottom: 0;
-}
-.content-title {
-  color: rgba(51, 51, 51, 1);
 
-  font-size: 1.3rem;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0.02em;
-  text-align: left;
 
-}
-.copy-icon{
-  color: rgba(155, 81, 224, 1);
-  font-weight: 700;
-}
+
 
 </style>
