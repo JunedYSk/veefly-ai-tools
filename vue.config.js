@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  publicPath: '/dashboard/',
+  publicPath: '/',
   productionSourceMap: false,
   css: {
     loaderOptions: {
