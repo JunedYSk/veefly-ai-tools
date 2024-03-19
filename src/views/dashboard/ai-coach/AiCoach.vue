@@ -239,8 +239,23 @@
           <h1 class="display-4 mb-5 text-center ai-text">AI Coach for your channel</h1>
         </div>
         <div class="main-div mb-3">
-          <b-tabs content-class="mt-2 w-100" class="w-100 font-weight-bolder h4 mb-0">
-            <b-tab title="Disabled" disabled>
+          <img
+            :src="selectedChannel.channel_thumbnail"
+            :alt="selectedChannel.channel_title"
+            class="rounded-circle ml-2 mr-1"
+            style="margin-top: -6px;width: 35px"
+            fluid
+          />
+          <b-dropdown :text="tabs[currentTab].title" variant="primary">
+            <b-dropdown-item  @click="currentTab = 0">
+              Ai Coach
+            </b-dropdown-item>
+            <b-dropdown-item  @click="currentTab = 1">
+              Chat History
+            </b-dropdown-item>
+          </b-dropdown>
+          <b-tabs content-class="mt-2 w-100" class="w-100 font-weight-bolder h4 mb-0" v-model="currentTab" nav-class="d-none">
+            <!-- <b-tab title="Disabled" disabled>
               <template #title>
                 <img
                   :src="selectedChannel.channel_thumbnail"
@@ -250,7 +265,7 @@
                   fluid
                 />
               </template>
-            </b-tab>
+            </b-tab> -->
             <b-tab class="pt-2 top-idea-tab" title="AI Coach" active>
               <div class="d-flex align-items-center">
                 <p class="font-weight-bolder mb-2 mr-2">Try asking about</p>
@@ -367,6 +382,8 @@ import {
   BTabs,
   BTab,
   BModal,
+  BDropdown,
+  BDropdownItem,
 } from "bootstrap-vue"
 import Ripple from "vue-ripple-directive"
 import axios from "@axios"
@@ -392,6 +409,8 @@ export default {
     BTabs,
     BTab,
     BModal,
+    BDropdown,
+    BDropdownItem,
   },
   data() {
     return {
@@ -429,6 +448,16 @@ export default {
 
       abortController: null,
       requestCanceller: null,
+
+      currentTab: 0,
+      tabs: [
+        {
+          title: 'Ai coach '
+        },
+        {
+          title: 'Chat History',
+        },
+      ],
     }
   },
   computed: {
