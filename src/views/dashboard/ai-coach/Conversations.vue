@@ -24,21 +24,20 @@
           >
             <div
               v-if="$route.params.id == conversationData.conv_id"
-              class="d-flex align-items-center bg-primary rounded mb-1 conversation-div"
+              class="d-flex align-items-center bg-primary rounded mb-1 conversation-div w-100"
             >
               <input
-                class="bg-transparent text-light border-0 outline-none px1"
+                class="bg-transparent text-light border-0 outline-none"
                 v-model="conversationData.title"
                 ref="conv-input"
                 :readonly="readOnly"
               />
 
-              <div class="d-flex align-items-center" v-if="!hideOptions">
+              <div class="d-flex align-items-center button-div" v-if="!hideOptions">
                 <b-button
                   variant="primary"
                   size="sm"
-                  class="rounded-sm"
-                  style="padding: 5px; margin-right: 3px;"
+                  class="rounded-sm chat-history-btn"
                   @click="edit"
                 >
                   <feather-icon icon="Edit2Icon" size="18" />
@@ -46,8 +45,7 @@
                 <b-button
                   variant="primary"
                   size="sm"
-                  class="rounded-sm"
-                  style="padding: 5px;"
+                  class="rounded-sm chat-history-btn"
                   :disabled="disableDeleteBtn"
                   @click="deleteConversation(conversationData, key)"
                 >
@@ -55,12 +53,11 @@
                 </b-button>
               </div>
 
-              <div class="d-flex align-items-center" v-if="hideOptions">
+              <div class="d-flex align-items-center button-div" v-if="hideOptions">
                 <b-button
                   variant="primary"
                   size="sm"
-                  class="rounded-sm"
-                  style="padding: 5px; margin-right: 3px;"
+                  class="rounded-sm chat-history-btn"
                   @click="updateTitle(conversationData)"
                 >
                   <feather-icon icon="CheckIcon" size="18" />
@@ -68,8 +65,7 @@
                 <b-button
                   variant="primary"
                   size="sm"
-                  class="rounded-sm"
-                  style="padding: 5px;"
+                  class="rounded-sm chat-history-btn"
                   @click="cancelEdit"
                 >
                   <feather-icon icon="XIcon" size="18" />
@@ -80,7 +76,7 @@
             <router-link
               v-else
               :to="{ name: 'ai-coach-chat', params: { id: conversationData.conv_id } }"
-              class="d-block chat-prompts text-dark rounded overflow-hidden mb-1 font-weight-normal"
+              class="d-block chat-prompts text-dark rounded overflow-hidden mb-1 font-weight-normal chat-history-text"
             >
               {{ conversationData.title }}
             </router-link>
@@ -114,7 +110,7 @@ export default {
   data() {
     return {
       hideOptions: false,
-      readOnly: false,
+      readOnly: true,
       disableDeleteBtn: false,
     }
   },
@@ -172,7 +168,7 @@ export default {
         .then(res => {
           this.disableDeleteBtn = false
 
-          this.$root.$emit('removeConversation', { id, conversationGroup })
+          this.$root.$emit('removeConversation', { conversationId: id, conversationGroup })
 
           this.$toast({
             component: ToastificationContent,
@@ -203,6 +199,14 @@ export default {
 </script>
 
 <style scoped>
+.chat-history-btn{
+  padding: 2px; 
+}
+.chat-history-text{
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  max-width: 240px;
+}
 .scroll-idea{
   max-height: 40vh; 
   overflow-y: auto;
@@ -210,21 +214,8 @@ export default {
 .scroll-idea::-webkit-scrollbar {
   width: 3px;
 }
-
-/* Track */
-.scroll-idea::-webkit-scrollbar-track {
-  background: #ffffff;
-}
-
-/* Handle */
 .scroll-idea::-webkit-scrollbar-thumb {
-  background: #888;
-  height: 20px;
-}
-
-/* Handle on hover */
-.scroll-idea::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background-color: rgba(169, 169, 169, 0.514);
 }
 .chat-prompts{
   line-height: 23px;
@@ -236,11 +227,25 @@ export default {
   justify-content: center;
   align-items: center;
   width: fit-content;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 .conversation-div{
-  padding: 3px 15px; 
-  font-size: 1.2rem;
+  max-width: 240px;
+  padding: 4px 1rem; 
+  font-size: 1rem;
   width: fit-content;
+  position: relative;
+  text-overflow: ellipsis;
+}
+.button-div{
+  position: absolute;
+  right: 12px;
+}
+@media (max-width: 767px) {
+  .chat-history-text{
+  text-overflow: ellipsis;
+  text-wrap: wrap;
+  max-width: 100%;
+}
 }
 </style>

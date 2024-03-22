@@ -8,9 +8,10 @@
         v-for="prompt in prompts"
         :key="prompt"
         @click="sendMessage(prompt)"
+        :disabled="receivingMessages"
       >
-        <div class="image-div"><img src="@/assets/images/preview/ai-coach-idea-image.png" alt=""></div>
-        {{ prompt }}
+        <div class="image-div"><img src="@/assets/images/preview/ai-coach-idea-image.png" class="ai-coach-idea-image" alt=""></div>
+        <span class="text-left">{{ prompt }}</span>
       </b-button>
     </div>
 
@@ -20,8 +21,8 @@
           class="user d-flex justify-content-start chat-prompts"
           v-if="message.role == 'user'"
         >
-          <div class="rounded-circle overflow-hidden order-1 image-div">
-            <img src="@/assets/images/preview/ai-coach-idea-image.png" v-if="selectedChannel" class="w-100">
+          <div class="rounded-circle order-1 image-div">
+            <img src="@/assets/images/preview/ai-coach-idea-image.png" v-if="selectedChannel" class="ai-coach-idea-image">
           </div>
           <div
             class="text-dark mr-1 rounded order-2 message-content-text"
@@ -39,8 +40,7 @@
               <img :src="appLogoImage" class="w-100">
             </div> -->
             <pre
-              class="text-dark p-1 rounded font-weight-normal"
-              style="background-color: inherit; font-size: initial; white-space: pre-wrap; width: calc(100% - 50px); margin-bottom: 5px;"
+              class="text-dark p-1 rounded font-weight-normal response-text"
               v-html="formatHTML(message.content)"
             />
           </div>
@@ -48,8 +48,7 @@
           <div class="text-right">
             <b-button
               variant="primary"
-              class="rounded-circle p-0"
-              style="height: 35px; width: 35px;"
+              class="rounded-circle p-0 copy-icon"
               @click="copyToClipboard(message.content)"
             >
               <feather-icon icon="CopyIcon" size="19" />
@@ -61,15 +60,14 @@
 
     <div
       class="assistant w-75 my-1 mb-3"
-      v-if="receivingMessages"
+      v-if="questionedTabIndex == 1 && receivingMessages"
     >
       <div class="d-flex justify-content-start">
         <!-- <div class="rounded-circle border overflow-hidden" style="height: 100%; width: 35px;">
           <img :src="appLogoImage" class="w-100">
         </div> -->
         <div
-          class="text-light p-1 rounded"
-          style="background-color: inherit; font-size: initial; white-space: pre-wrap; width: calc(100% - 50px); margin-bottom: 5px;"
+          class="text-light p-1 rounded response-text"
         >
           {{ receivedMessage }}
           <b-spinner v-if="receivedMessage" type="grow" label="Loading..." variant="light" small />
@@ -117,7 +115,7 @@ export default {
       return this.$store.state.user.selectedChannel
     },
   },
-  props: ["sendMessage", "messages", "receivingMessages", "receivedMessage"],
+  props: ["sendMessage", "messages", "receivingMessages", "receivedMessage", "questionedTabIndex"],
   methods: {
     formatHTML(content) {
       if (!content) { return }
@@ -156,6 +154,10 @@ export default {
   align-items: center;
   width: fit-content; 
 }
+.ai-coach-idea-image{
+  width: 1rem;
+  height: 1rem;
+}
 .image-div{
   margin: 0 0.5rem 0.4rem ;
 }
@@ -166,24 +168,22 @@ export default {
   max-height: 40vh; 
   overflow: auto;
 }
-/* width */
 .scroll-idea::-webkit-scrollbar {
   width: 3px;
 }
-
-/* Track */
-.scroll-idea::-webkit-scrollbar-track {
-  background: #ffffff;
-}
-
-/* Handle */
 .scroll-idea::-webkit-scrollbar-thumb {
-  background: #888;
-  height: 20px;
+  background-color: rgba(169, 169, 169, 0.514);
+}
+.response-text{
+  background-color: inherit; 
+  font-size: initial; 
+  white-space: pre-wrap; 
+  width: calc(100% - 50px); 
+  margin-bottom: 5px;
+}
+.copy-icon{
+  height: 35px; 
+  width: 35px;
 }
 
-/* Handle on hover */
-.scroll-idea::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
 </style>

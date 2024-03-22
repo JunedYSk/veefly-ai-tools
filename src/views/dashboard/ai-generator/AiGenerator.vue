@@ -8,16 +8,16 @@
         style="height: 85vh;"
         v-if="!showSecondaryUI"
       >  
-        <img style="position: absolute;height:100%;right:0;margin-right:-2rem;" src="@/assets/images/preview/ai-bg.png" alt="">
+        <img src="@/assets/images/preview/ai-bg.png" alt="" class="background-image-css">
         <div class="mb-2"><img src="@/assets/images/preview/group-1000002280.png" alt=""></div>
         <div class="d-flex flex-column align-items-center justify-content-center w-100">
           <h1 class="display-4 mb-2 text-center ai-text">AI Content Generator<br> for YouTube</h1>
-          <p class="mt-2" style="font-size: 1.5rem;color: rgba(155, 81, 224, 1);font-weight:500;">Video creation process has never been easier! </p>
+          <p class="mt-2 purple-text">Video creation process has never been easier! </p>
         </div>
         <div class="mt-3 search-bar">
           <validation-observer ref="campaignForm" #default="{ invalid }">
             <b-form @submit.prevent="submitIdea">
-              <div class="input-with-button" style="position: relative;">
+              <div class="input-with-button position-relative">
                 <validation-provider
                   #default="{ errors }"
                   name="url"
@@ -58,11 +58,11 @@
 
       <!-- Secondary UI -->
       <div class="pb-3" v-if="showSecondaryUI">
-        <img style="position: absolute;right:0;top:0;width: 351px;margin-top: 69px;" src="@/assets/images/preview/secondary-ui-bg.png" alt="">
-        <h1 style="font-size:20px;color: rgba(155, 81, 224, 1);font-weight:700;">AI Content Generator</h1>
+        <img src="@/assets/images/preview/secondary-ui-bg.png" alt="" class="secondary-ui-bg">
+        <h1 class="secondary-ui-text">AI Content Generator</h1>
 
         <div class="d-flex align-items-start mt-2 mb-3">
-          <p class="my-auto mr-1" style="font-size:30px;font-weight:700;color: rgba(51, 51, 51, 1);line-height:30px;">
+          <p class="my-auto mr-1 secondary-ui-ideas-text">
             <strong>Video Idea:</strong>
             {{ videoIdea }}
           </p>
@@ -93,7 +93,7 @@
                   </div>
                 </div>
               </div>
-              <p class="content-body mb-0" style="font-weight: 500;font-size: 16px;color: rgba(51, 51, 51, 1);">
+              <p class="content-body mb-0 ai-generated-text">
                 <span v-if="loadingTitle">
                   <b-spinner label="Loading..." variant="primary" />
                 </span>
@@ -118,7 +118,7 @@
                   </div>
                 </div>
               </div>
-              <p class="content-body mb-0" style="font-weight: 500;font-size: 16px;color: rgba(51, 51, 51, 1);">
+              <p class="content-body mb-0 ai-generated-text">
                 <span v-if="loadingDescription">
                   <b-spinner label="Loading..." variant="primary" />
                 </span>
@@ -143,7 +143,7 @@
                   </div>
                 </div>
               </div>
-              <p class="content-body mb-0" style="font-weight: 500;font-size: 16px;color: rgba(51, 51, 51, 1);">
+              <p class="content-body mb-0 ai-generated-text">
                 <span v-if="loadingKeywords">
                   <b-spinner label="Loading..." variant="primary" />
                 </span>
@@ -196,7 +196,7 @@
                   </div>
                 </div>
               </div>
-              <p class="content-body mb-0 overflow-auto" style="height: 55vh;font-weight: 500;font-size: 16px;color: rgba(51, 51, 51, 1);">
+              <p class="content-body mb-0 overflow-auto ai-generated-text" style="height: 55vh;">
                 <span v-if="loadingScript">
                   <b-spinner label="Loading..." variant="primary" />
                 </span>
@@ -238,17 +238,17 @@
         style="height: 85vh;"
         v-if="!showSecondaryUI"
       >
-        <img style="position: absolute;bottom:0;width:275px" src="@/assets/images/preview/mobile-ai-bg.png" alt="">
+        <img src="@/assets/images/preview/mobile-ai-bg.png" alt="" class="mobile-ai-bg">
         <div class="mb-2" style="margin-top:8rem;"><img src="@/assets/images/preview/mobile-icon.png" alt=""></div>
         <div class="d-flex flex-column align-items-center justify-content-center w-100">
           <h1 class="display-4 mb-1 text-center mx-1 ai-text">AI Content Generator<br> for YouTube</h1>
-          <p class="mt-1 text-center mx-1" style="font-size: 14px;color: rgba(155, 81, 224, 1);font-weight:500;">Video creation process has never been easier! </p>
+          <p class="mt-1 text-center mx-1 mob-purple-text">Video creation process has never been easier! </p>
         </div>
 
         <div class="mt-2 w-100 px-1">
           <validation-observer ref="campaignForm" #default="{ invalid }">
             <b-form @submit.prevent="submitIdea">
-              <div class="input-with-button" style="position: relative;">
+              <div class="input-with-button position-relative">
                 <validation-provider
                   #default="{ errors }"
                   name="url"
@@ -289,10 +289,9 @@
 
       <!-- Secondary UI -->
       <div class="pb-3" v-if="showSecondaryUI">
-        <h1 class="ml-2 mt-2" style="font-size:20px;color: rgba(155, 81, 224, 1);font-weight:700;">AI Content Generator</h1>
-
+        <h1 class="ml-2 mt-2 mob-secondary-ui-text">AI Content Generator</h1>
         <div class="d-flex flex-column align-items-start mt-2 mb-3">
-          <p class="my-auto mr-1 ml-2" style="font-size:30px;font-weight:700;color: rgba(51, 51, 51, 1);line-height:35px;">
+          <p class="my-auto mr-1 ml-2 mob-secondary-ui-ideas-text">
             <strong>Video Idea:</strong>
             {{ videoIdea }}
           </p>
@@ -324,7 +323,7 @@
                   </div>
                 </div>
               </div>
-              <p class="content-body mb-0" style="font-weight: 500;font-size: 16px;color: rgba(51, 51, 51, 1);">
+              <p class="content-body mb-0 ai-generated-text">
                 <span v-if="loadingTitle">
                   <b-spinner label="Loading..." variant="primary" />
                 </span>
@@ -349,7 +348,7 @@
                   </div>
                 </div>
               </div>
-              <p class="content-body mb-0" style="font-weight: 500;font-size: 16px;color: rgba(51, 51, 51, 1);">
+              <p class="content-body mb-0 ai-generated-text">
                 <span v-if="loadingDescription">
                   <b-spinner label="Loading..." variant="primary" />
                 </span>
@@ -374,7 +373,7 @@
                   </div>
                 </div>
               </div>
-              <p class="content-body mb-0"  style="font-weight: 500;font-size: 16px;color: rgba(51, 51, 51, 1);">
+              <p class="content-body mb-0 ai-generated-text">
                 <span v-if="loadingKeywords">
                   <b-spinner label="Loading..." variant="primary" />
                 </span>
@@ -427,7 +426,7 @@
                   </div>
                 </div>
               </div>
-              <p class="content-body mb-0 overflow-auto" style="height: 55vh;font-weight: 500;font-size: 16px;color: rgba(51, 51, 51, 1);">
+              <p class="content-body mb-0 overflow-auto ai-generated-text" style="height: 55vh;">
                 <span v-if="loadingScript">
                   <b-spinner label="Loading..." variant="primary" />
                 </span>
@@ -737,6 +736,61 @@ export default {
 </script>
 
 <style scoped>
+.background-image-css{
+  position: absolute;
+  height:100%;
+  right:0;
+  margin-right:-2rem;
+}
+.purple-text{
+  font-size: 1.5rem;
+  color: rgba(155, 81, 224, 1);
+  font-weight:500;
+}
+.secondary-ui-bg{
+  position: absolute;
+  right:0;
+  top:0;
+  width: 351px;
+  margin-top: 69px;
+}
+.secondary-ui-text{
+  font-size:20px;
+  color: rgba(155, 81, 224, 1);
+  font-weight:700;
+}
+.secondary-ui-ideas-text{
+  font-size:30px;
+  font-weight:700;
+  color: rgba(51, 51, 51, 1);
+  line-height:30px;
+}
+.ai-generated-text{
+  font-weight: 500;
+  font-size: 16px;
+  color: rgba(51, 51, 51, 1);
+}
+.mobile-ai-bg{
+  position: absolute;
+  bottom:0;
+  width:275px
+}
+.mob-purple-text{
+  font-size: 14px;
+  color: rgba(155, 81, 224, 1);
+  font-weight:500;
+}
+.mob-secondary-ui-ideas-text{
+  font-size:30px;
+  font-weight:700;
+  color: rgba(51, 51, 51, 1);
+  line-height:35px;
+}
+.mob-secondary-ui-text{
+  font-size:20px;
+  color: rgba(155, 81, 224, 1);
+  font-weight:700;
+}
 /* Primary UI */
 .input-with-button {
   display: flex;
@@ -848,6 +902,7 @@ export default {
 .description, .script {
   background-color: inherit;
   white-space: pre-wrap;
+  font-size: 1rem;
 }
 
 .thumbnails {

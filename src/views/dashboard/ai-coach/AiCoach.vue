@@ -59,14 +59,13 @@
           <h1 class="display-4 mb-5 text-center ai-text">AI Coach for your channel</h1>
         </div>
         <div class="main-div mb-3">
-          <b-tabs content-class="mt-2 w-100" class="w-100 font-weight-bolder h4 mb-0">
+          <b-tabs content-class="mt-2 w-100" class="w-100 font-weight-bolder h4 mb-0" v-model="tabIndex">
             <b-tab title="Disabled" disabled>
               <template #title>
                 <img
                   :src="selectedChannel.channel_thumbnail"
                   :alt="selectedChannel.channel_title"
-                  class="rounded-circle"
-                  style="width: 38px; height: 38px;margin-top: -8px;"
+                  class="rounded-circle thumbnail-image-css"
                   fluid
                 />
               </template>
@@ -77,9 +76,10 @@
                 <b-button
                   variant="outline-primary"
                   class="rounded w-25 mb-2"
-                  @click="showNewChatUI=true; messages=[]"
+                  @click="showNewChatUI=true; messages=[];newMessages=[]"
                   :to="{ name: 'ai-coach' }"
                   block
+                  :disabled="receivingMessages"
                 >
                   <feather-icon icon="PlusIcon" />
                   New Chat
@@ -88,25 +88,27 @@
               <new-chat
                 v-if="showNewChatUI"
                 :send-message="sendMessage"
-                :messages="messages"
+                :messages="newMessages"
                 :receiving-messages="receivingMessages"
                 :received-message="receivedMessage"
+                :questioned-tab-index="questionedTabIndex"
               />
             </b-tab>
             <b-tab class="pt-2 top-idea-tab" title="Chat History">
-              <div class="row">
-                <div class="col-md-6">
+              <div class="d-flex">
+                <div style="width: 250px;">
                   <conversations
                     :loading-conversations="loadingConversations"
                     :conversations="conversations"
                   />
                 </div>
-                <div class="col-md-6 px-0">
+                <div class="px-0">
                   <messages
                     :loading-messages="loadingMessages"
                     :messages="messages"
                     :receiving-messages="receivingMessages"
                     :received-message="receivedMessage"
+                    :questioned-tab-index="questionedTabIndex"
                     ref="messages"
                   />
                 </div>
@@ -211,14 +213,21 @@
 
       <!-- Secondary UI -->
       <div class="ai-coach" v-if="showSecondaryUI">
-        <b-modal 
-          id="modal-center" 
-          centered hide-footer 
-          cancel-title 
-          header-bg-variant="transparent" 
-          no-close-on-esc
-          v-model="visible"
-          >
+        <vue-bottom-sheet-vue2 
+          ref="add-channel-modal-mobile"
+          modal-class="modal-primary"
+          centered
+          hide-footer
+          size="md"
+          class="modaltargetting rounded-t-xl"
+          no-close-on-backdrop
+        >
+          <button @click="closeVueBottomSheet()" style="top: 11px;right: 11px;" class="bg-transparent border-0 position-absolute">
+            <feather-icon
+              icon="XIcon"
+              size="16"
+            /> 
+          </button>
           <div class="d-flex flex-column align-items-center pb-3">
             <div><img src="@/assets/images/preview/daily-ideas-design-image.png" alt=""></div>
             <p class="text-center premium-heading-text mt-2">You‘ve reached your limit of <br class="breaking-point"> free AI content plan</p>
@@ -232,7 +241,7 @@
               </b-button>
             </div>
           </div>
-        </b-modal>
+        </vue-bottom-sheet-vue2 >
         <img class="bg-image" src="@/assets/images/preview/ai-bg.png" alt="">
         <div class="d-flex flex-column align-items-center justify-content-center w-100 mt-3">
           <div class="mb-2"><img src="@/assets/images/preview/ai-coach-image.png" alt=""></div>
@@ -242,8 +251,7 @@
           <img
             :src="selectedChannel.channel_thumbnail"
             :alt="selectedChannel.channel_title"
-            class="rounded-circle ml-2 mr-1"
-            style="margin-top: -6px;width: 35px"
+            class="rounded-circle ml-2 mr-1 mob-thumbnail-image-css"
             fluid
           />
           <b-dropdown :text="tabs[currentTab].title" variant="primary">
@@ -272,9 +280,10 @@
                 <b-button
                   variant="outline-primary"
                   class="rounded w-75 mb-2"
-                  @click="showNewChatUI=true; messages=[]"
+                  @click="showNewChatUI=true; messages=[];newMessages=[]"
                   :to="{ name: 'ai-coach' }"
                   block
+                  :disabled="receivingMessages"
                 >
                   <feather-icon icon="PlusIcon" />
                   New Chat
@@ -283,9 +292,10 @@
               <new-chat
                 v-if="showNewChatUI"
                 :send-message="sendMessage"
-                :messages="messages"
+                :messages="newMessages"
                 :receiving-messages="receivingMessages"
                 :received-message="receivedMessage"
+                :questioned-tab-index="questionedTabIndex"
               />
             </b-tab>
             <b-tab class="pt-2 top-idea-tab" title="Chat History">
@@ -394,6 +404,7 @@ import Conversations from './Conversations.vue'
 import MessageForm from './MessageForm.vue'
 import Messages from './Messages.vue'
 import NewChat from './NewChat.vue'
+import VueBottomSheetVue2 from "@webzlodimir/vue-bottom-sheet-vue2";
 
 export default {
   components: {
@@ -411,9 +422,12 @@ export default {
     BModal,
     BDropdown,
     BDropdownItem,
+    VueBottomSheetVue2,
   },
   data() {
     return {
+      vueBottomSheet:false,
+      tabIndex: 1,
       visible: false,
       loading: true,
       setupLoading: false,
@@ -434,6 +448,9 @@ export default {
       loadingMessages: false,
       messageError: false,
       messages: [],
+
+      questionedTabIndex: null,
+      newMessages: [],
 
       receivingMessages: false,
       receivedMessage: null,
@@ -485,6 +502,7 @@ export default {
         } else {
           this.showNewChatUI = true
           this.messages = []
+          this.newMessages = []
         }
       }
     },
@@ -499,6 +517,7 @@ export default {
       } else {
         this.showNewChatUI = true
         this.messages = []
+        this.newMessages = []
       }
     },
     'messageSent': function () {
@@ -524,6 +543,7 @@ export default {
       } else {
         this.showNewChatUI = true
         this.messages = []
+        this.newMessages = []
       }
     }
 
@@ -533,6 +553,17 @@ export default {
     })
   },
   methods: {
+    openVueBottomSheet(){
+      
+      this.vueBottomSheet=!this.vueBottomSheet
+
+      if(this.vueBottomSheet){ 
+        this.$refs['add-channel-modal-mobile'].open()
+      } 
+    },
+    closeVueBottomSheet(){
+      this.$refs['add-channel-modal-mobile'].close()
+    },
     checkAssistantExists() {
       this.loading = true
       this.setupLoading = false
@@ -612,14 +643,23 @@ export default {
     sendMessage(msgText) {
       if (!msgText) { return }
 
-      this.messages.push({
-        role: 'user',
-        content: msgText,
-      })
+      this.questionedTabIndex = this.tabIndex
+
+      if (this.tabIndex == 1) {
+        this.newMessages.push({
+          role: 'user',
+          content: msgText,
+        })
+      } else {
+        this.messages.push({
+          role: 'user',
+          content: msgText,
+        })
+      }
 
       let conv_id = this.$route.params.id
 
-      if (!this.$route.params.id) {
+      if (!this.$route.params.id || this.tabIndex == 1) {
         conv_id = uuid.v4()
       }
 
@@ -679,10 +719,17 @@ export default {
         .then(res => {
           // this.messages = res.data.data
           // this.receivedMessage = res.data.messages
-          this.messages.push({
-            role: 'assistant',
-            content: res.data.message
-          })
+          if (this.questionedTabIndex == 1) {
+            this.newMessages.push({
+              role: 'assistant',
+              content: res.data.message
+            })
+          } else {
+            this.messages.push({
+              role: 'assistant',
+              content: res.data.message
+            })
+          }
 
           if (this.status == 'completed') {
             this.receivingMessages = false
@@ -696,16 +743,16 @@ export default {
     },
     removeConversation(conversationId, conversationGroup) {
       if (conversationGroup == 0) {
-        el.conversations[0].data = el.conversations[0].data.filter(c => c.id !== conversationId)
+        this.conversations[0].data = this.conversations[0].data.filter(c => c.id !== conversationId)
       }
       else if (conversationGroup == 1) {
-        el.conversations[1].data = el.conversations[1].data.filter(c => c.id !== conversationId)
+        this.conversations[1].data = this.conversations[1].data.filter(c => c.id !== conversationId)
       }
       else if (conversationGroup == 2) {
-        el.conversations[2].data = el.conversations[2].data.filter(c => c.id !== conversationId)
+        this.conversations[2].data = this.conversations[2].data.filter(c => c.id !== conversationId)
       }
       else if (conversationGroup == 3) {
-        el.conversations[3].data = el.conversations[3].data.filter(c => c.id !== conversationId)
+        this.conversations[3].data = this.conversations[3].data.filter(c => c.id !== conversationId)
       }
     },
     formatHTML(content) {
@@ -759,8 +806,15 @@ export default {
   border-radius: 2rem;
   padding: 0.7rem 1.5rem;
 }
-
-
+.thumbnail-image-css{
+  width: 38px;
+  height: 38px;
+  margin-top: -8px;
+}
+.mob-thumbnail-image-css{
+  margin-top: -6px;
+  width: 35px
+}
 .premium-heading-text{
   color: rgba(51, 51, 51, 1);
   font-size: 22px;

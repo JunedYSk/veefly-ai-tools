@@ -122,8 +122,7 @@
                   <img
                     :src="selectedChannel.channel_thumbnail"
                     :alt="selectedChannel.channel_title"
-                    class="rounded-circle"
-                    style="width: 38px; height: 38px;margin-top: -8px;"
+                    class="rounded-circle thumbnail-image"
                     fluid
                   />
                 </template>
@@ -199,7 +198,7 @@
                         </b-button>
                       </div>
                     </div>
-                    <div class="w-100 mt-5"><img style="filter: blur(3rem);max-height: 400px;" class="w-100" src="@/assets/images/preview/blur-image-ai-daily-new.png" alt=""></div>
+                    <div class="w-100 mt-5"><img class="w-100 blur-image-ai" src="@/assets/images/preview/blur-image-ai-daily-new.png" alt=""></div>
                   </div>
                 </div>
 
@@ -387,7 +386,7 @@
         </div>
       </div>
     </div>
-    <div class="d-md-none" style="background: linear-gradient(196.5deg, #50148B 0%, #9B51E0 100%);">
+    <div class="d-md-none mob-ai-bg">
       <!-- Primary UI -->
       <div
         class="d-flex flex-column align-items-center justify-content-center position-relative"
@@ -593,7 +592,7 @@
                         </b-button>
                       </div>
                     </div>
-                    <div class="w-100"><img style="filter: blur(3rem);max-height: 242px;" class="w-100" src="@/assets/images/preview/blur-img-mobile.png" alt=""></div>
+                    <div class="w-100"><img class="w-100 mob-blur-image-ai" src="@/assets/images/preview/blur-img-mobile.png" alt=""></div>
                   </div>
                 </div>
 
@@ -1085,6 +1084,22 @@ export default {
 </script>
 
 <style scoped>
+.thumbnail-image{
+  width: 38px;
+  height: 38px;
+  margin-top: -8px;
+}
+.blur-image-ai{
+  filter: blur(3rem);
+  max-height: 400px;
+}
+.mob-ai-bg{
+  background: linear-gradient(196.5deg, #50148B 0%, #9B51E0 100%);
+}
+.mob-blur-image-ai{
+  filter: blur(3rem);
+  max-height: 242px;
+}
 .loading-text{
   font-size: 1.5rem;
   color: rgba(155, 81, 224, 1);

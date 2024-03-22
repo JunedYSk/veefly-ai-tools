@@ -22,7 +22,7 @@ let indexRoute = { name: 'ai-generator' }
 
 const router = new VueRouter({
   mode: 'history',
-  base: '/dashboard',
+  base: '/',
   scrollBehavior() {
     return { x: 0, y: 0 }
   },
